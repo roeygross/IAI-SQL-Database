@@ -229,3 +229,53 @@ exit;
 
 
 פירוט ישויות של מסד הנתונים:
+Solidier	חייל
+ID	תעודת זהות
+First Name	שם פרטי		
+Last Name	שם משפחה		
+Rank	דרגה		
+Birth Date	תאריך לידה		
+			
+Pilot	טייס
+Flight Hours	מספר שעות טיסה	
+Type	סוג		
+Call Sign	כינוי		
+			
+Technical Engineer	מהנדס טכני
+Licence Number	מספר אשרה	
+Technical Engineer	מהנדס טכני		
+Speciality	התמחות		
+			
+Aircraft	מטוס
+Serial ID	מספר סידורי	
+Production Date	תאריך ייצור		
+Ammunition Type	סוג חימוש		
+Model	דגם		
+			
+UAV	כטמ"מ
+Control Range	טווח שליטה	
+Communication	סוג תקשורת		
+Battery	אחוז סוללה		
+			
+Airplane	מטוס
+Fule	כמות דלק	
+G-Force Limit	הגבלת כח ה-G		
+Ejection Seat Capacity	יכולת כסא מפלט		
+			
+Flight	טיסה
+Flight ID	מספר טיסה
+Flight Date	תאריך טיסה		
+Duration	אישור		
+			
+Airbase	בסיס טיסה
+Name	שם	
+Capacity	קיבולת		
+Location	מיקום		
+RunwaysNumber	מספר מסלולים		
+			
+			
+Suqadron	טייסת
+Squardon Number	מספר טייסת	
+Squadron Name	שם טייסת		
+Formation Date	תאריך ייסוד		
+![image](https://github.com/roeygross/IAF-Database/assets/128812767/a4549de3-693d-45bb-a4d3-1791b5ddd8c4)
