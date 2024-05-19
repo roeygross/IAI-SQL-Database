@@ -230,4 +230,6 @@ exit;
 
 פירוט ישויות של מסד הנתונים:
 	
-![image](https://github.com/roeygross/IAF-Database/assets/128812767/a4549de3-693d-45bb-a4d3-1791b5ddd8c4)
+		
+![image](https://github.com/roeygross/IAF-Database/assets/128812767/d22f834e-4c0c-4219-aa05-c5fa3f54ca5f)
+
