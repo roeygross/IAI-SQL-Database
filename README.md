@@ -137,3 +137,25 @@ GRANT ALL ON Aircraft TO public
 
 exit;
 ~~~
+
+
+פירוט ישויות של מסד הנתונים:
+Solidier - חייל:
+![image](https://github.com/roeygross/IAF-Database/assets/128812767/1b562dfe-fb1d-48f9-90cd-bc11bc2c6ea2)
+
+Pilot - טייס:
+![image](https://github.com/roeygross/IAF-Database/assets/128812767/12a983be-31af-4730-821a-52cbcc49a8cf)
+
+Technical Engineer - מהנדס טכני:
+![image](https://github.com/roeygross/IAF-Database/assets/128812767/22962074-b3ca-4819-a19b-ff26254fb212)
+
+Aircraft - מטוס:
+![image](https://github.com/roeygross/IAF-Database/assets/128812767/3598af5a-d9bc-4fd9-8dfe-cf544224d0a0)
+
+Flight - טיסה:
+![image](https://github.com/roeygross/IAF-Database/assets/128812767/1221af70-1ad1-4d06-8ab9-1db916f81d91)
+
+Airbase - שדה תעופה:
+
+
+
