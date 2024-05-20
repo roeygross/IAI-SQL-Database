@@ -1,4 +1,4 @@
-
+![image](https://github.com/roeygross/IAF-Database/assets/128812767/c3c1cc8a-baa4-4198-aedd-f765ff8d2ecc)
 שלב א- תיאור המערכת 
 תיאור מילולי של הארגון:
 חיל האויר הוא מרכיב משמעותי בעוצמתו של צה"ל ונחשב לחזק ביותר במזרח התיכון.
@@ -243,9 +243,25 @@ exit;
 
 ובסיס טיסה.
 
+
 ישנם ישויות המוגדרות על בסיס הישויות הפיזיות, והן מייצגות יישויות רעיוניות, למשל:
 טיסה - התאמה בין מטוס, טייס, ובסיס טיסה.
 
 טייסת - קבוצת טייסים השייכת לבסיס מסויים
+
+
+אכלוס נתונים:
+
+באמצעות mockaroo:
+
+![image](https://github.com/roeygross/IAF-Database/assets/128812767/12f57d9f-3b63-452b-9e5c-d211f5b58587)
+
+
+
+![image](https://github.com/roeygross/IAF-Database/assets/128812767/019d2af1-e88f-478e-85c2-d4875d8800fd)
+
+
+![image](https://github.com/roeygross/IAF-Database/assets/128812767/98cf4671-558f-4d96-8b67-61660a2a4f74)
+
 
 
