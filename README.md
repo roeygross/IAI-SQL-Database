@@ -263,5 +263,17 @@ exit;
 
 ![image](https://github.com/roeygross/IAF-Database/assets/128812767/98cf4671-558f-4d96-8b67-61660a2a4f74)
 
+באמצעות data generator ב-pl/sql:
+
+
+Squadron:
+![image](https://github.com/roeygross/IAF-Database/assets/126462535/a205e179-a459-462b-8370-bfa0ba90a591)
+
+
+Airbase:
+![image](https://github.com/roeygross/IAF-Database/assets/126462535/41eb3d89-e96a-4cdd-8aa5-05fa1bfa3526)
+
+
+
 
 
