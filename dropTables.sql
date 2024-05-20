@@ -1,0 +1,9 @@
+DROP TABLE Flight;
+DROP TABLE UAV;
+DROP TABLE Airplane;
+DROP TABLE Airbase;
+DROP TABLE Technical_Engineer;
+DROP TABLE Pilot;
+DROP TABLE Aircraft;
+DROP TABLE Squadron;
+DROP TABLE Soldier;
