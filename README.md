@@ -251,8 +251,12 @@ exit;
 
 
 אכלוס נתונים:
+1. באמצעות קבצי CVS:
 
-באמצעות mockaroo:
+![image](https://github.com/roeygross/IAF-Database/assets/128812767/885024d6-b2fb-4064-a102-99072bfa842d)
+
+
+2. באמצעות mockaroo:
 
 ![image](https://github.com/roeygross/IAF-Database/assets/128812767/12f57d9f-3b63-452b-9e5c-d211f5b58587)
 
@@ -263,7 +267,7 @@ exit;
 
 ![image](https://github.com/roeygross/IAF-Database/assets/128812767/98cf4671-558f-4d96-8b67-61660a2a4f74)
 
-באמצעות data generator ב-pl/sql:
+3. באמצעות data generator ב-pl/sql:
 
 
 Squadron:
