@@ -22,8 +22,7 @@
 ![dsd](https://github.com/roeygross/IAF-Database/assets/128812767/deb98401-7097-4e0a-aae8-f4cf55a18809)
 
 קוד SQL לייצירת הטבלאות בהתאם
-~~~sql
---
+~~~sql--
 -- Target: Oracle 
 -- Syntax: sqlplus user@tnsnames_entry/password @filename.sql
 -- 
@@ -42,11 +41,11 @@
 -- ID              :  
 --
 CREATE TABLE Soldier (
-    First_Name     VARCHAR2(20) NOT NULL,
-    Last_Name      VARCHAR2(20) NOT NULL,
-    Rank           VARCHAR2(10) NOT NULL,
-    Brithdate      DATE NOT NULL,
-    ID             NUMBER(38) NOT NULL,
+    first_name     VARCHAR2(20) NOT NULL,
+    last_name       VARCHAR2(20) NOT NULL,
+    rank           VARCHAR2(10) NOT NULL,
+    birthdate      DATE NOT NULL,
+    id             NUMBER(38) NOT NULL,
 CONSTRAINT pk_Soldier PRIMARY KEY (ID))
 /
 
@@ -59,10 +58,10 @@ CONSTRAINT pk_Soldier PRIMARY KEY (ID))
 -- Model           :  
 --
 CREATE TABLE Aircraft (
-    SerialID       NUMBER(38) NOT NULL,
-    Production_Date DATE NOT NULL,
-    AmmunitionType VARCHAR2(15) NOT NULL,
-    Model          VARCHAR2(15) NOT NULL,
+    serialid       NUMBER(38) NOT NULL,
+    production_date DATE NOT NULL,
+    ammunitiontype VARCHAR2(15) NOT NULL,
+    model          VARCHAR2(15) NOT NULL,
 CONSTRAINT pk_Aircraft PRIMARY KEY (SerialID))
 /
 
@@ -74,9 +73,9 @@ CONSTRAINT pk_Aircraft PRIMARY KEY (SerialID))
 -- Formation_Date  :  
 --
 CREATE TABLE Squadron (
-    Squadron_Number NUMBER(38) NOT NULL,
-    Suadron_Name   VARCHAR2(20) NOT NULL,
-    Formation_Date DATE NOT NULL,
+    squadron_number NUMBER(38) NOT NULL,
+    suadron_name   VARCHAR2(20) NOT NULL,
+    formation_date DATE NOT NULL,
 CONSTRAINT pk_Squadron PRIMARY KEY (Squadron_Number))
 /
 
@@ -90,11 +89,11 @@ CONSTRAINT pk_Squadron PRIMARY KEY (Squadron_Number))
 -- Squadron_Number :  (references Squadron.Squadron_Number)
 --
 CREATE TABLE Pilot (
-    ID             NUMBER(38) NOT NULL,
-    Type           VARCHAR2(10) NOT NULL,
-    Flight_Hours   NUMBER(38) NOT NULL,
-    Call_Sign      VARCHAR2(20) NOT NULL UNIQUE,
-    Squadron_Number NUMBER(38) NOT NULL,
+    id             NUMBER(38) NOT NULL,
+    type           VARCHAR2(10) NOT NULL,
+    flight_hours   NUMBER(38) NOT NULL,
+    call_sign      VARCHAR2(20) NOT NULL,
+    squadron_number NUMBER(38) NOT NULL,
 CONSTRAINT pk_Pilot PRIMARY KEY (ID),
 CONSTRAINT fk_Pilot2 FOREIGN KEY (ID)
     REFERENCES Soldier (ID),
@@ -112,10 +111,10 @@ CONSTRAINT fk_Pilot FOREIGN KEY (Squadron_Number)
 -- LicenceNumber   :  
 --
 CREATE TABLE Technical_Engineer (
-    ID             NUMBER(38) NOT NULL,
-    Degree         VARCHAR2(20) NOT NULL,
-    Speciality     VARCHAR2(20) NOT NULL,
-    LicenceNumber  NUMBER(38) NOT NULL UNIQUE,
+    id             NUMBER(38) NOT NULL,
+    degree         VARCHAR2(20) NOT NULL,
+    speciality     VARCHAR2(20) NOT NULL,
+    licencenumber  NUMBER(38) NOT NULL UNIQUE,
 CONSTRAINT pk_Technical_Engineer PRIMARY KEY (ID),
 CONSTRAINT fk_Technical_Engineer FOREIGN KEY (ID)
     REFERENCES Soldier (ID))
@@ -130,10 +129,10 @@ CONSTRAINT fk_Technical_Engineer FOREIGN KEY (ID)
 -- Control_Range   :  
 --
 CREATE TABLE UAV (
-    SerialID       NUMBER(38) NOT NULL,
-    Battry         NUMBER(38) NOT NULL,
-    Communication  VARCHAR2 NOT NULL,
-    Control_Range  NUMBER(38) NOT NULL,
+    serialid       NUMBER(38) NOT NULL,
+    battry         NUMBER(38) NOT NULL,
+    communication  VARCHAR2(20) NOT NULL,
+    control_range  NUMBER(38) NOT NULL,
 CONSTRAINT pk_UAV PRIMARY KEY (SerialID),
 CONSTRAINT fk_UAV FOREIGN KEY (SerialID)
     REFERENCES Aircraft (SerialID))
@@ -148,13 +147,13 @@ CONSTRAINT fk_UAV FOREIGN KEY (SerialID)
 -- Ejection_Seat_Capable :  
 --
 CREATE TABLE Airplane (
-    SerialID       NUMBER(38) NOT NULL,
-    Fuel           NUMBER(38) NOT NULL,
-    Gforce_Limit   NUMBER(38) NOT NULL,
-    Ejection_Seat_Capable CHAR(1) NOT NULL,
-CONSTRAINT pk_Airplane PRIMARY KEY (SerialID),
-CONSTRAINT fk_Airplane FOREIGN KEY (SerialID)
-    REFERENCES Aircraft (SerialID))
+    serialid       NUMBER(38) NOT NULL,
+    fuel           NUMBER(38) NOT NULL,
+    gforce_limit   NUMBER(38) NOT NULL,
+    ejection_seat_capable CHAR(1) NOT NULL,
+CONSTRAINT pk_Airplane PRIMARY KEY (serialid),
+CONSTRAINT fk_Airplane FOREIGN KEY (serialid)
+    REFERENCES Aircraft (serialid))
 /
 
 
@@ -167,11 +166,11 @@ CONSTRAINT fk_Airplane FOREIGN KEY (SerialID)
 -- Runway_Number   :  
 --
 CREATE TABLE Airbase (
-    Name           VARCHAR2(20) NOT NULL,
-    Capacity       NUMBER(38) NOT NULL,
-    Location       VARCHAR2(30) NOT NULL,
-    Squadron_Number NUMBER(38) NOT NULL,
-    Runway_Number  NUMBER(38) NOT NULL,
+    name           VARCHAR2(50) NOT NULL,
+    capacity       NUMBER(38) NOT NULL,
+    location       VARCHAR2(30) NOT NULL,
+    squadron_number NUMBER(38) NOT NULL,
+    runway_number  NUMBER(38) NOT NULL,
 CONSTRAINT pk_Airbase PRIMARY KEY (Name),
 CONSTRAINT fk_Airbase FOREIGN KEY (Squadron_Number)
     REFERENCES Squadron (Squadron_Number))
@@ -188,12 +187,12 @@ CONSTRAINT fk_Airbase FOREIGN KEY (Squadron_Number)
 -- Duration        :  
 --
 CREATE TABLE Flight (
-    FlightId       NUMBER(38) NOT NULL,
-    ID             NUMBER(38) NOT NULL,
-    Name           VARCHAR2(20) NOT NULL,
-    SerialID       NUMBER(38) NOT NULL,
-    Flight_Date    DATE NOT NULL,
-    Duration       TIMESTAMP NOT NULL,
+    flightid       NUMBER(38) NOT NULL,
+    id             NUMBER(38) NOT NULL,
+    name           VARCHAR2(50) NOT NULL,
+    serialid       NUMBER(38) NOT NULL,
+    flight_date    DATE NOT NULL,
+    duration       NUMBER(38) NOT NULL,
 CONSTRAINT pk_Flight PRIMARY KEY (FlightId,ID,Name,SerialID),
 CONSTRAINT fk_Flight FOREIGN KEY (ID)
     REFERENCES Pilot (ID)
@@ -204,33 +203,17 @@ CONSTRAINT fk_Flight2 FOREIGN KEY (Name)
 CONSTRAINT fk_Flight3 FOREIGN KEY (SerialID)
     REFERENCES Aircraft (SerialID)
     ON DELETE CASCADE)
-/
-
-
---
--- Permissions for: 'public'
---
-GRANT ALL ON Soldier TO public
-/
-GRANT ALL ON Aircraft TO public
-/
-GRANT ALL ON Squadron TO public
-/
-GRANT ALL ON Pilot TO public
-/
-GRANT ALL ON Technical_Engineer TO public
-/
-GRANT ALL ON UAV TO public
-/
-GRANT ALL ON Airplane TO public
-/
-GRANT ALL ON Airbase TO public
-/
-GRANT ALL ON Flight TO public
-/
-
-exit;
 ~~~
+
+הצגה של הטבלאות המתקבלות בעזרת DESC:
+Soldier:
+
+
+
+
+
+
+
 
 
 פירוט ישויות של מסד הנתונים:
@@ -253,6 +236,7 @@ exit;
 טיסה - התאמה בין מטוס, טייס, ובסיס טיסה.
 
 טייסת - קבוצת טייסים השייכת לבסיס מסויים
+
 
 
 אכלוס נתונים:
@@ -281,6 +265,30 @@ Squadron:
 
 Airbase:
 ![image](https://github.com/roeygross/IAF-Database/assets/126462535/41eb3d89-e96a-4cdd-8aa5-05fa1bfa3526)
+
+
+Aircraft:
+![image](https://github.com/roeygross/DBProject_328494091_214737728/assets/126462535/d7c0ca46-ce4e-4440-8834-43aa03443669)
+
+
+Airplane:
+![image](https://github.com/roeygross/DBProject_328494091_214737728/assets/126462535/fb336ab7-7657-4936-b614-5c9e1860a423)
+
+UAV:
+![image](https://github.com/roeygross/DBProject_328494091_214737728/assets/126462535/532abc30-f5ba-4a73-9bba-9b2f59decf87)
+
+Flight:
+![image](https://github.com/roeygross/DBProject_328494091_214737728/assets/126462535/533e8d63-dce0-425b-b08e-882394c53854)
+
+
+
+העלאה של Soldier.csv לPL/SQL:
+![image](https://github.com/roeygross/DBProject_328494091_214737728/assets/126462535/5b791133-4763-4432-ab6f-4bef49f371e1)
+
+
+
+
+
 
 
 
