@@ -321,6 +321,19 @@ Flight:
 
 
 
+גיבוי:
+נשתמש באפשרות בתוך PL/SQL:
+
+![image](https://github.com/roeygross/DBProject_328494091_214737728/assets/126462535/c7167e93-71c2-4e87-98ab-7e8b04169749)
+
+ונקבל קובץ שנראה כך:
+
+![image](https://github.com/roeygross/DBProject_328494091_214737728/assets/126462535/f2bf2770-e0b1-4f14-90a0-bfc73c843a70)
+
+
+ולאחר מכן נפתח מחשב אחר ועליו נריץ את זה:
+
+
 
 
 
