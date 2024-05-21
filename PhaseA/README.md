@@ -321,7 +321,12 @@ Flight:
 
 
 
+
+
+
 גיבוי:
+
+
 נשתמש באפשרות בתוך PL/SQL:
 
 ![image](https://github.com/roeygross/DBProject_328494091_214737728/assets/126462535/c7167e93-71c2-4e87-98ab-7e8b04169749)
