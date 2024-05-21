@@ -4,7 +4,7 @@ Version=1
 
 [Preferences]
 Username=
-Password=2822
+Password=2854
 Database=
 DateFormat=
 CommitCount=0
@@ -33,7 +33,7 @@ Master=
 [Record]
 Name=NAME
 Type=VARCHAR2
-Size=20
+Size=50
 Data=List(select name from airbase)
 Master=
 
