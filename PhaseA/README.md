@@ -207,8 +207,31 @@ CONSTRAINT fk_Flight3 FOREIGN KEY (SerialID)
 
 הצגה של הטבלאות המתקבלות בעזרת DESC:
 Soldier:
+![soldier](https://github.com/roeygross/DBProject_328494091_214737728/assets/126462535/d30f1142-fed7-45b2-9360-5dcb409d6914)
 
+Pilot:
+![pilot](https://github.com/roeygross/DBProject_328494091_214737728/assets/126462535/b093446e-8700-4251-bbce-657681635c5e)
 
+Technical_Engineer:
+![technical_engineer](https://github.com/roeygross/DBProject_328494091_214737728/assets/126462535/fec87ac6-a797-48ea-84ce-39a86f3b63ce)
+
+Squadron:
+![squadron](https://github.com/roeygross/DBProject_328494091_214737728/assets/126462535/387a441b-53f3-40b7-91b2-84d685e8bda0)
+
+Aircraft:
+![aircraft](https://github.com/roeygross/DBProject_328494091_214737728/assets/126462535/30cb6959-41fd-45c0-bfb6-7faa4a4de1ee)
+
+Airplane:
+![airplane](https://github.com/roeygross/DBProject_328494091_214737728/assets/126462535/e378ff9f-253e-4b16-91a1-4da09aa67e58)
+
+UAV:
+![uav](https://github.com/roeygross/DBProject_328494091_214737728/assets/126462535/4b1667d8-dc1d-4e9f-92a1-cd5468ca1906)
+
+Airbase:
+![airbase](https://github.com/roeygross/DBProject_328494091_214737728/assets/126462535/e3c0db97-2c12-4d8e-9dcb-b64db1781f5c)
+
+Flight:
+![flight](https://github.com/roeygross/DBProject_328494091_214737728/assets/126462535/97c57763-a065-45cb-bf47-56cf5d4e0140)
 
 
 
