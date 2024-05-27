@@ -300,10 +300,6 @@ Flight:
 3. באמצעות data generator ב-pl/sql:
 
 
-Squadron:
-![image](https://github.com/roeygross/IAF-Database/assets/126462535/a205e179-a459-462b-8370-bfa0ba90a591)
-
-
 Airbase:
 ![image](https://github.com/roeygross/IAF-Database/assets/126462535/41eb3d89-e96a-4cdd-8aa5-05fa1bfa3526)
 
@@ -322,6 +318,11 @@ Flight:
 ![image](https://github.com/roeygross/DBProject_328494091_214737728/assets/126462535/533e8d63-dce0-425b-b08e-882394c53854)
 
 
+אפשרות שלישית - יצירת מידע עבור SQUADRON בעזרת PYTHON:
+אנחנו נשתמש בספרייה faker ליצירת מידע פיקטיבי.
+~~~python
+entry = f'{faker.unique.name()},{faker.date()},{faker.random_int(10000,99999)}'
+~~~
 
 העלאה של Soldier.csv לPL/SQL:
 ![image](https://github.com/roeygross/DBProject_328494091_214737728/assets/126462535/5b791133-4763-4432-ab6f-4bef49f371e1)
