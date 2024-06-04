@@ -36,13 +36,13 @@ GROUP BY
 ORDER BY 
     total_flight_hours DESC;
 
---the pilots that had the most flights between 1990 and 2000 and where born after 1990 ordered by age
+--the pilots that had the most flights after 2000 and where born  between 1990 and 2000  ordered by age
 SELECT p.id, s.first_name, s.last_name, s.birthdate, COUNT(*) AS num_flights
 FROM Pilot p
 JOIN Flight f ON p.id = f.id
 JOIN Soldier s ON p.id = s.id
 WHERE s.birthdate > DATE '1990-01-01' AND s.birthdate < DATE '2000-12-31'
-    AND f.flight_date > DATE '1990-01-01'
+    AND f.flight_date > DATE '2000-01-01'
 GROUP BY p.id, s.first_name, s.last_name, s.birthdate
 ORDER BY COUNT(*) DESC;
 
