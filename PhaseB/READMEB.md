@@ -87,13 +87,6 @@
 
 עדכון קיבולת בסיסי חיל אוויר - אם לא יצאו מהבסיס טיסות - מפחית את הקיבולת ב2, אם יצאו מהבסיס יותר מ5 טיסות, מגדיל את הקיבולת ב5.
 
-![image](https://github.com/roeygross/DBProject_328494091_214737728/assets/128812767/492a97b6-7895-4613-8296-5fc4a8aa8a67)
-
-
-![image](https://github.com/roeygross/DBProject_328494091_214737728/assets/128812767/7d3659ac-1b49-4f36-94cf-a2b2f835fe5d)
-
-![image](https://github.com/roeygross/DBProject_328494091_214737728/assets/128812767/f23f8c75-c616-483e-883c-20eadf5c8787)
-
 
 
 
@@ -102,11 +95,11 @@
 
 עדכון בטיחותי לאחר אירוע קטסרטופלי בקנה מידה גדול מאוד - מוריד באחד את טווח השליטה של כל הכטמ"מים שטייסיהם היו ביותר מ2 טיסות מ2 בסיסים שונים, לאחר 9.11.2001.
 
-![image](https://github.com/roeygross/DBProject_328494091_214737728/assets/128812767/9bc3a9a6-d2d1-4284-b4ae-c6bd68cd28e4)
+![image](https://github.com/roeygross/DBProject_328494091_214737728/assets/128812767/d3ddd250-291a-4bcc-93c8-2b89dcb6208e)
 
-![image](https://github.com/roeygross/DBProject_328494091_214737728/assets/128812767/bdb440aa-e912-45c6-8a6c-c622e53d9083)
+![image](https://github.com/roeygross/DBProject_328494091_214737728/assets/128812767/5ee1780e-2d5f-47da-8361-43f507f34e65)
 
-![image](https://github.com/roeygross/DBProject_328494091_214737728/assets/128812767/bb24987d-0d1f-4aef-ad63-bb9dec220d83)
+![image](https://github.com/roeygross/DBProject_328494091_214737728/assets/128812767/1d81bb90-d43b-4a83-8eb2-76f07c55e309)
 
 
 
