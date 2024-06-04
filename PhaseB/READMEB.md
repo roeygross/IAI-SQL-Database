@@ -88,6 +88,11 @@
 עדכון קיבולת בסיסי חיל אוויר - אם לא יצאו מהבסיס טיסות - מפחית את הקיבולת ב2, אם יצאו מהבסיס יותר מ5 טיסות, מגדיל את הקיבולת ב5.
 
 
+![image](https://github.com/roeygross/DBProject_328494091_214737728/assets/128812767/c42455e1-13b6-4195-950b-ced25c083ed4)
+
+![image](https://github.com/roeygross/DBProject_328494091_214737728/assets/128812767/3baeec71-37dc-4a89-8ce7-b538157ab519)
+
+![image](https://github.com/roeygross/DBProject_328494091_214737728/assets/128812767/e7d023e8-96c6-4619-bff5-b1bb88f8bdb8)
 
 
 
