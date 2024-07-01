@@ -13,7 +13,7 @@ RETURN SYS_REFCURSOR IS
   v_cur SYS_REFCURSOR;
 BEGIN
   OPEN v_cur FOR
-    SELECT p.id, p.call_sign
+    SELECT *
     FROM Pilot p
     WHERE p.id NOT IN (
       SELECT f.id
@@ -21,8 +21,9 @@ BEGIN
       WHERE f.flight_date = p_date
     );
   RETURN v_cur;
-END get_available_pilots;
+END;
 /
+
 ```
 פרוצדורה: assign_pilot_to_flight
 
@@ -61,8 +62,9 @@ EXCEPTION
   WHEN OTHERS THEN
     ROLLBACK;
     RAISE;
-END assign_pilot_to_flight;
+END;
 /
+
 ```
 תוכנית ראשית:
 
@@ -70,48 +72,37 @@ END assign_pilot_to_flight;
 קוד:
 
 ```
+-- Main program to assign pilots to flights
 DECLARE
-  v_date DATE := TO_DATE('01-JUL-2024', 'DD-MON-YYYY');
-  v_flight_id NUMBER := 123;  -- Example flight ID
-  v_pilot_id NUMBER;
-  v_available_pilots SYS_REFCURSOR;
+  v_flightid NUMBER := 136564;
+  v_chosen_date DATE;
+  v_pilots SYS_REFCURSOR;
+  v_pilot_record pilot%ROWTYPE;
 
-  -- Cursor to iterate over available pilots
-  CURSOR available_pilots_cur IS
-    SELECT id
-    FROM Pilot
-    WHERE id NOT IN (
-      SELECT f.id
-      FROM Flight f
-      WHERE f.flight_date = v_date
-    );
 BEGIN
-  -- Get the list of available pilots for the given date
-  v_available_pilots := get_available_pilots(v_date);
-
-  -- Open the cursor and fetch the first available pilot
-  OPEN available_pilots_cur;
-  FETCH available_pilots_cur INTO v_pilot_id;
-
-  -- If no pilots are available, raise an error
-  IF available_pilots_cur%NOTFOUND THEN
-    DBMS_OUTPUT.PUT_LINE('No available pilots on the given date.');
-    CLOSE available_pilots_cur;
-    RETURN;
-  END IF;
-
-  -- Close the cursor
-  CLOSE available_pilots_cur;
-
-  -- Assign the first available pilot to the flight
-  assign_pilot_to_flight(v_flight_id, v_pilot_id);
+  SELECT flight_date INTO v_chosen_date
+  FROM Flight
+  WHERE flightid = v_flightid;
   
-  DBMS_OUTPUT.PUT_LINE('Pilot assigned successfully.');
+  v_pilots := get_available_pilots(v_chosen_date);
+
+  -- Fetch a pilot from the cursor and assign to flight
+  FETCH v_pilots INTO v_pilot_record;
+  CLOSE v_pilots;
+  
+  IF v_pilot_record.id IS NOT NULL THEN
+    assign_pilot_to_flight(v_flightid, v_pilot_record.id);
+  ELSE
+    DBMS_OUTPUT.PUT_LINE('No available pilots found for date ' || v_chosen_date);
+  END IF;
+  
 EXCEPTION
   WHEN OTHERS THEN
-    DBMS_OUTPUT.PUT_LINE('Error: ' || SQLERRM);
+    DBMS_OUTPUT.PUT_LINE('An error occurred: ' || SQLERRM);
+    IF v_pilots%ISOPEN THEN
+      CLOSE v_pilots;
+    END IF;
 END;
-/
 ```
 הוכחת הפעלה:
 
