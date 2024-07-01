@@ -105,6 +105,9 @@ EXCEPTION
 END;
 ```
 הוכחת הפעלה:
+
+
+
 ![תמונה של WhatsApp‏ 2024-07-01 בשעה 23 32 58_74b84b52](https://github.com/roeygross/DBProject_328494091_214737728/assets/128812767/29a6ff2c-9e97-4aca-80bc-d8ee320e721c)
 
 
