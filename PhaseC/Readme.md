@@ -105,8 +105,16 @@ EXCEPTION
 END;
 ```
 הוכחת הפעלה:
+![תמונה של WhatsApp‏ 2024-07-01 בשעה 23 32 58_74b84b52](https://github.com/roeygross/DBProject_328494091_214737728/assets/128812767/29a6ff2c-9e97-4aca-80bc-d8ee320e721c)
 
 
+
+
+
+![תמונה של WhatsApp‏ 2024-07-01 בשעה 23 34 21_e37e3d12](https://github.com/roeygross/DBProject_328494091_214737728/assets/128812767/7955fdb1-3f06-4f02-96ac-67008c883aaa)
+
+
+![תמונה של WhatsApp‏ 2024-07-01 בשעה 23 34 58_4865143d](https://github.com/roeygross/DBProject_328494091_214737728/assets/128812767/7dbca3ec-90d4-4fab-8949-4ba466668a40)
 
 תוכנית 2: תוכנית תחזוקה
 תיאור מילולי:
