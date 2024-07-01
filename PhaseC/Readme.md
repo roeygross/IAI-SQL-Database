@@ -165,58 +165,71 @@ CREATE OR REPLACE PROCEDURE perform_maintenance(p_aircraft_list SYS_REFCURSOR) I
   v_battery_max NUMBER := 100;  -- Assuming 100 is the max battery level
   v_fuel_max NUMBER := 100;     -- Assuming 100 is the max fuel level
 
-  -- Cursor for counting Technical Engineers with specialty 'Repair'
+  -- Cursor for counting Technical Engineers with specialty 'repair'
   CURSOR tech_cursor IS
     SELECT COUNT(*) AS tech_count
     FROM Technical_Engineer
-    WHERE speciality = 'Repair';
+    WHERE speciality = 'repair';
+
+  -- Local cursor variable for the aircraft list
+  v_aircraft_cursor SYS_REFCURSOR;
+
 BEGIN
-  -- Get the count of technical engineers with specialty 'Repair'
+  -- Get the count of technical engineers with specialty 'repair'
   OPEN tech_cursor;
   FETCH tech_cursor INTO v_tech_count;
   CLOSE tech_cursor;
+
+  -- Open the cursor for the aircraft list
+  v_aircraft_cursor := p_aircraft_list;
 
   -- Count the number of aircrafts in the list
   DECLARE
     v_aircraft_count NUMBER := 0;
   BEGIN
     LOOP
-      FETCH p_aircraft_list INTO v_serialid;
-      EXIT WHEN p_aircraft_list%NOTFOUND;
+      FETCH v_aircraft_cursor INTO v_serialid;
+      EXIT WHEN v_aircraft_cursor%NOTFOUND;
       v_aircraft_count := v_aircraft_count + 1;
     END LOOP;
-    CLOSE p_aircraft_list;
+    CLOSE v_aircraft_cursor;
 
+    -- Check if there are enough technical engineers for maintenance
     IF v_aircraft_count > v_tech_count THEN
-      RAISE_APPLICATION_ERROR(-20001, 'Cannot perform maintenance');
+      RAISE_APPLICATION_ERROR(-20001, 'Cannot perform maintenance: Insufficient technical engineers. engineers: ' || v_tech_count || ' planes: ' || v_aircraft_count);
     END IF;
   END;
 
-  -- Perform maintenance
-  OPEN p_aircraft_list;
+  -- Perform maintenance on each aircraft in the list
+  v_aircraft_cursor := p_aircraft_list;
   LOOP
-    FETCH p_aircraft_list INTO v_serialid;
-    EXIT WHEN p_aircraft_list%NOTFOUND;
+    FETCH v_aircraft_cursor INTO v_serialid;
+    EXIT WHEN v_aircraft_cursor%NOTFOUND;
 
-    -- Update battery and fuel levels
+    -- Update UAVs
     UPDATE UAV
     SET battry = v_battery_max,
         control_range = control_range * 1.1
     WHERE serialid = v_serialid;
 
+    -- Update Airplanes
     UPDATE Airplane
     SET fuel = v_fuel_max
     WHERE serialid = v_serialid;
 
+    -- Commit changes for each aircraft
     COMMIT;
   END LOOP;
-  CLOSE p_aircraft_list;
+  CLOSE v_aircraft_cursor;
+
 EXCEPTION
   WHEN OTHERS THEN
+    -- Rollback changes on error
     ROLLBACK;
     RAISE;
 END perform_maintenance;
 /
+
 ```
 תוכנית ראשית:
 
@@ -225,26 +238,48 @@ END perform_maintenance;
 
 ```
 DECLARE
-  v_min_date DATE := TO_DATE('01-JAN-2010', 'DD-MON-YYYY');
-  v_min_flights NUMBER := 100;
-  v_aircraft_list SYS_REFCURSOR;
-BEGIN
-  -- Call the function to get the list of aircrafts for maintenance
-  v_aircraft_list := get_aircraft_for_maintenance(v_min_date, v_min_flights);
+  v_min_date DATE := TO_DATE('01-01-1970', 'DD-MM-YYYY');
+  v_min_flights NUMBER := 2;
 
-  -- Call the procedure to perform maintenance
-  perform_maintenance(v_aircraft_list);
+  -- SYS_REFCURSOR for aircraft list
+  v_aircraft_list SYS_REFCURSOR;
+
+  -- Variables for fetching from cursor
+  v_serialid aircraft.serialid%TYPE;
+  v_production_date aircraft.production_date%TYPE;
+  v_ammunitiontype aircraft.ammunitiontype%TYPE;
+  v_model aircraft.model%TYPE;
+
+BEGIN
+  -- Fetch the aircraft list for maintenance
+  v_aircraft_list := get_aircraft_for_maintenance(v_min_date, v_min_flights);
   
-  DBMS_OUTPUT.PUT_LINE('Maintenance completed successfully.');
+  -- Perform maintenance on the list of aircrafts
+  perform_maintenance(v_aircraft_list);
+
+  -- Print the aircraft details
+  LOOP
+    FETCH v_aircraft_list INTO v_serialid, v_production_date, v_ammunitiontype, v_model;
+    EXIT WHEN v_aircraft_list%NOTFOUND;
+    DBMS_OUTPUT.PUT_LINE('SerialID: ' || v_serialid || 
+                         ', Production Date: ' || v_production_date ||
+                         ', Ammunition Type: ' || v_ammunitiontype ||
+                         ', Model: ' || v_model);
+  END LOOP;
+  CLOSE v_aircraft_list;
+  
 EXCEPTION
   WHEN OTHERS THEN
-    DBMS_OUTPUT.PUT_LINE('Error: ' || SQLERRM);
+    DBMS_OUTPUT.PUT_LINE('An error occurred: ' || SQLERRM);
+    IF v_aircraft_list%ISOPEN THEN
+      CLOSE v_aircraft_list;
+    END IF;
 END;
-/
 ```
 הוכחת הפעלה:
 
 
+![תמונה של WhatsApp‏ 2024-07-01 בשעה 23 42 48_41573e06](https://github.com/roeygross/DBProject_328494091_214737728/assets/128812767/9386d762-1449-4f39-ac63-9473c84b3d2b)
 
 סיכום:
 לשתי התוכניות הפונקציה והפרוצדורה מוגדרות, והאינטראקציות ביניהן מתואמות על ידי התוכנית הראשית. כל תוכנית כוללת טיפול בשגיאות והודעות פלט לאישור ביצוע מוצלח או מתן פרטים במקרה של שגיאות. הוכחת הפעלה לכל תוכנית תכלול צילומי מסך או יומנים המראים שהתוכניות רצות ללא בעיות ומשיגות את מטרותיהן.
