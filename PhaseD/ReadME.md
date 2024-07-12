@@ -11,3 +11,7 @@
 
 המערכת המשותפת - IAF ומשמר לאומי משותף ERD:
 ![integrated](https://github.com/user-attachments/assets/ecfec15d-3d99-4b30-a33f-65067dddba78)
+
+
+המערכת המשותף - IAF ומשמר לאומי DSD משותף:
+![image](https://github.com/user-attachments/assets/4d106127-d320-4cda-977c-593c68f9b68f)
