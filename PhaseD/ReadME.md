@@ -11,7 +11,8 @@
 
 
 המערכת המשותפת - IAF ומשמר לאומי משותף ERD:
-![integrated](https://github.com/user-attachments/assets/ecfec15d-3d99-4b30-a33f-65067dddba78)
+![348314156-ecfec15d-3d99-4b30-a33f-65067dddba78](https://github.com/user-attachments/assets/dea0ae62-0609-45f7-9f03-0f51f19d7ce0)
+
 
 
 המערכת המשותף - IAF ומשמר לאומי DSD משותף:
@@ -120,6 +121,9 @@
 
 שליפת נתונים ממנו עם select * (מספיק 10 רשומות):
 
+![image](https://github.com/user-attachments/assets/fc35c5a7-7267-4247-b76d-a9c5ccf13a8e)
+
+
 
 
 
@@ -127,6 +131,8 @@
 מבט זה מציג מידע אודות מטוסים שדורשים תחזוקה. הוא משלב נתונים אודות מטוסים עם נתוני טיסות, ומציג מטוסים שטסו ב-30 הימים האחרונים או שלא טסו כלל. המבט כולל את המספר הסידורי של המטוס, תאריך הייצור, סוג התחמושת, מודל המטוס, תאריך הטיסה האחרונה, ומשך זמן הטיסה.
 
 שליפת נתונים ממנו עם select * (מספיק 10 רשומות):
+
+![image](https://github.com/user-attachments/assets/0ef952b1-81d5-4c13-8a6a-1defc8b12c6f)
 
 
 
@@ -150,6 +156,29 @@ GROUP BY shift_id, start_date_time, end_date_time, base_location;
 
 פלט השאילתא:
 
+![image](https://github.com/user-attachments/assets/0a98854c-520e-4e9d-9dee-b12cb3437a16)
+
+
+דוח משמרות עתידיות
+שאילתה זו מציגה תמונה כללית המתדנבים והמשמרות שיש להם השנה.
+
+
+
+
+```
+-- get an image of shifts for every volunteer in the comming year
+SELECT volunteer_id, volunteer_name, shift_id, start_date_time, end_date_time, base_location
+FROM Volunteers_Shifts
+WHERE start_date_time > to_date('01/01/2024', 'DD/MM/YYYY')
+ORDER BY start_date_time ASC;
+```
+
+
+פלט השאילתא:
+
+![image](https://github.com/user-attachments/assets/5a42bc64-a64b-49c6-ac02-9ebfd3b1635b)
+
+
 
 
 
@@ -164,4 +193,24 @@ WHERE production_date <= ADD_MONTHS(SYSDATE, -480);
 ```
 
 פלט השאילתא:
+
+![image](https://github.com/user-attachments/assets/6a490d92-d94e-4cc4-95d5-132ea7308979)
+
+
+
+שאילתת מלאי נשק
+שאילתה זו מציגה אילו סוגי תחמושת הינם הכי נפוצים בקרב המטוסים, בשביל תחזוקת מלאי.
+```
+-- list the most commonly used ammunition type
+SELECT ammunitiontype, COUNT(*) AS usage_count
+FROM Maintenance_Aircraft_Check
+GROUP BY ammunitiontype
+ORDER BY usage_count DESC;
+```
+
+פלט השאילתא:
+
+![image](https://github.com/user-attachments/assets/1736b812-0d2a-4334-91a5-288e6be9f793)
+
+
 
